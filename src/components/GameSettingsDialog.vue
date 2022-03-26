@@ -48,15 +48,6 @@
                             v-model="numBots"
                             :rules="numBotsRules"
                         />
-                        <v-select
-                            id="botLevel"
-                            label="Bot Level"
-                            name="botLevel"
-                            clearable
-                            :items="botLevelOptions"
-                            v-model="botLevel"
-                            :rules="botLevelRules"
-                        />
                     </v-form>
                     <div class="error--text">{{ errorText }}</div>
                 </v-card-text>
@@ -128,13 +119,6 @@ export default {
                     'Number of Bots should be a whole number',
                 v => (v && parseInt(v) < this.maxPlayers) || 'Number of bots should be less than total allowed players.'
             ],
-            botLevel: null,
-            botLevelOptions: ['Easy', 'Medium', 'Hard'],
-            botLevelRules: [
-                v => (parseInt(this.numBots) > 0 ? !!v : true) || 'Bot Level is required for non-zero number of bots',
-                v => (parseInt(this.numBots) == 0 ? !v : true) || 'Bot Level is not required for zero number of bots',
-                v => (parseInt(this.numBots) > 0 ? this.botLevelOptions.includes(v) : true || 'Choose a valid option')
-            ],
             errorText: ''
         }
     },
@@ -153,8 +137,7 @@ export default {
                         userBuyIn: this.userBuyIn,
                         bigBlind: this.bigBlind,
                         smallBlind: this.smallBlind,
-                        numBots: this.numBots,
-                        botLevel: this.botLevel
+                        numBots: this.numBots
                     })
                     this.$router.push({
                         name: 'games',
