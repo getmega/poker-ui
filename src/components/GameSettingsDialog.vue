@@ -21,6 +21,13 @@
                             :rules="maxBuyInRules"
                         />
                         <v-text-field
+                            id="userBuyIn"
+                            label="Your Buy-In"
+                            name="userBuyIn"
+                            v-model="userBuyIn"
+                            :rules="userBuyInRules"
+                        />
+                        <v-text-field
                             id="bigBlind"
                             label="Big Blind"
                             name="bigBlind"
@@ -40,15 +47,6 @@
                             name="numBots"
                             v-model="numBots"
                             :rules="numBotsRules"
-                        />
-                        <v-select
-                            id="botLevel"
-                            label="Bot Level"
-                            name="botLevel"
-                            clearable
-                            :items="botLevelOptions"
-                            v-model="botLevel"
-                            :rules="botLevelRules"
                         />
                     </v-form>
                     <div class="error--text">{{ errorText }}</div>
@@ -91,6 +89,14 @@ export default {
                 v => (v && parseInt(v) > this.bigBlind) || 'The max buy-in amount must greater than the big blind.',
                 v => (v && parseInt(v) <= 10000) || 'The max buy-in cannot be more than 10000.'
             ],
+            userBuyIn: 10000,
+            userBuyInRules: [
+                v => !!v || "User's Buy-In amount is required",
+                v => (v && parseInt(v) > 0) || 'The buy-in amount must be greater than 0.',
+                v => Number.isInteger(parseInt(v)) || 'The buy-in amount must be an integer.',
+                v => (v && parseInt(v) > this.bigBlind) || 'The buy-in amount must greater than the big blind.',
+                v => (v && parseInt(v) <= this.maxBuyIn) || 'The buy-in cannot be more than the Max Buy-in.'
+            ],
             bigBlind: 20,
             bigBlindRules: [
                 v => !!v || 'Big blind is required',
@@ -113,13 +119,6 @@ export default {
                     'Number of Bots should be a whole number',
                 v => (v && parseInt(v) < this.maxPlayers) || 'Number of bots should be less than total allowed players.'
             ],
-            botLevel: null,
-            botLevelOptions: ['Easy', 'Medium', 'Hard'],
-            botLevelRules: [
-                v => (parseInt(this.numBots) > 0 ? !!v : true) || 'Bot Level is required for non-zero number of bots',
-                v => (parseInt(this.numBots) == 0 ? !v : true) || 'Bot Level is not required for zero number of bots',
-                v => (parseInt(this.numBots) > 0 ? this.botLevelOptions.includes(v) : true || 'Choose a valid option')
-            ],
             errorText: ''
         }
     },
@@ -135,10 +134,10 @@ export default {
                         name: this.name,
                         maxPlayers: this.maxPlayers,
                         maxBuyIn: this.maxBuyIn,
+                        userBuyIn: this.userBuyIn,
                         bigBlind: this.bigBlind,
                         smallBlind: this.smallBlind,
-                        numBots: this.numBots,
-                        botLevel: this.botLevel
+                        numBots: this.numBots
                     })
                     this.$router.push({
                         name: 'games',
