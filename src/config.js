@@ -3,7 +3,7 @@ const local = {
 }
 
 const prod = {
-    apiBaseUrl: 'https://poker-friends-api.herokuapp.com/'
+    apiBaseUrl: 'https://poker-webui-api-dot-getmega-app.uc.r.appspot.com/'
 }
 
 const config = process.env.NODE_ENV === 'production' ? prod : local
