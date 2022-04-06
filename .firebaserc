@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "getmega-app"
+  },
+  "targets": {
+    "getmega-app": {
+      "hosting": {
+        "default": [
+          "pokerbot"
+        ]
+      }
+    }
+  }
+}
