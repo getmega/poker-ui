@@ -2,9 +2,6 @@
 node_modules
 /dist
 
-# firebase files
-.firebase
-
 # local env files
 .env.local
 .env.*.local
@@ -24,3 +21,4 @@ yarn-error.log*
 *.sw?
 
 testUI.js
+.firebase
