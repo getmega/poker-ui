@@ -1,3 +1,9 @@
+$small: 576px;
+$medium: 768px;
+$large: 992px;
+$xLarge: 1200px;
+$xxLarge: 1400px;
+
 $userCardWidth: 40px;
 $userCardHeight: 53px;
 $flippedHandVerticalOffset: -($userCardHeight);
@@ -27,6 +33,18 @@ $currentBetOffset: -($currentBetWidth - 15px);
     background-image: url('/images/poker-table.png');
     background-size: 900px 500px;
     background-position: center;
+
+    @media screen and (max-width: $medium) {
+        width: 600px;
+        height: 350px;
+        background-size: 600px 350px;
+    }
+
+    @media screen and (max-width: $small) {
+        width: 400px;
+        height: 250px;
+        background-size: 400px 250px;
+    }
 }
 
 .leave-btn {
@@ -73,6 +91,10 @@ $currentBetOffset: -($currentBetWidth - 15px);
         width: 74px;
         &:first-child {
             margin-right: 10px;
+        }
+
+        @media screen and (max-width: $small) {
+            width: 56px;
         }
     }
 }
@@ -270,11 +292,19 @@ $colDealerChipVerticalOffset: 60px;
 .player-0 {
     right: $tablePadding;
     @include bottom-row;
+
+    @media screen and (max-width: $small) {
+        right: 50px;
+    }
 }
 
 .player-1 {
     right: $tablePadding + $playerWidth + $marginBetweenPlayers;
     @include bottom-row;
+
+    @media screen and (max-width: $small) {
+        right: 200px;
+    }
 }
 
 .player-2 {
