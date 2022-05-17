@@ -41,9 +41,9 @@ $currentBetOffset: -($currentBetWidth - 15px);
     }
 
     @media screen and (max-width: $small) {
-        width: 400px;
+        width: 360px;
         height: 250px;
-        background-size: 400px 250px;
+        background-size: 360px 210px;
     }
 }
 
@@ -85,6 +85,13 @@ $currentBetOffset: -($currentBetWidth - 15px);
     margin-top: -20px;
     margin: -20px 30px;
 
+    @media screen and (max-width: $small) {
+        padding: 40px 0;
+        margin: 0;
+        width: 100%;
+        text-align: center;
+    }
+
     .card {
         height: 100px;
         display: inline-block;
@@ -95,6 +102,7 @@ $currentBetOffset: -($currentBetWidth - 15px);
 
         @media screen and (max-width: $small) {
             width: 56px;
+            height: 78px;
         }
     }
 }
@@ -295,6 +303,7 @@ $colDealerChipVerticalOffset: 60px;
 
     @media screen and (max-width: $small) {
         right: 50px;
+        bottom: -20px;
     }
 }
 
@@ -304,6 +313,7 @@ $colDealerChipVerticalOffset: 60px;
 
     @media screen and (max-width: $small) {
         right: 200px;
+        bottom: -20px;
     }
 }
 
@@ -615,4 +625,11 @@ $winnerColYPositions: 77px, 60px;
     text-align: center;
     top: 332px;
     position: absolute;
+}
+
+.v-btn:not(.v-btn--round).v-size--large {
+    @media screen and (max-width: $small){
+        height: 32px;
+        width: 92px;
+    }
 }
