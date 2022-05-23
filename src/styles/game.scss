@@ -1,3 +1,9 @@
+$small: 576px;
+$medium: 768px;
+$large: 992px;
+$xLarge: 1200px;
+$xxLarge: 1400px;
+
 $userCardWidth: 40px;
 $userCardHeight: 53px;
 $flippedHandVerticalOffset: -($userCardHeight);
@@ -27,6 +33,18 @@ $currentBetOffset: -($currentBetWidth - 15px);
     background-image: url('/images/poker-table.png');
     background-size: 900px 500px;
     background-position: center;
+
+    @media screen and (max-width: $medium) {
+        width: 600px;
+        height: 350px;
+        background-size: 600px 350px;
+    }
+
+    @media screen and (max-width: $small) {
+        width: 360px;
+        height: 250px;
+        background-size: 360px 210px;
+    }
 }
 
 .leave-btn {
@@ -44,9 +62,20 @@ $currentBetOffset: -($currentBetWidth - 15px);
 .community-container {
     width: 430px;
 
+    @media screen and (max-width: $small) {
+        position: absolute;
+        bottom: 65%;
+        left: 19%;
+    }
+
     .card {
         height: 95px;
         width: 70px;
+
+        @media screen and (max-width: $small) {
+            height: 40px;
+            width: 30px;
+        }
     }
 
     .card + .card {
@@ -67,12 +96,24 @@ $currentBetOffset: -($currentBetWidth - 15px);
     margin-top: -20px;
     margin: -20px 30px;
 
+    @media screen and (max-width: $small) {
+        padding: 40px 0;
+        margin: 0;
+        width: 100%;
+        text-align: center;
+    }
+
     .card {
         height: 100px;
         display: inline-block;
         width: 74px;
         &:first-child {
             margin-right: 10px;
+        }
+
+        @media screen and (max-width: $small) {
+            width: 56px;
+            height: 78px;
         }
     }
 }
@@ -104,6 +145,11 @@ $currentBetOffset: -($currentBetWidth - 15px);
     position: absolute;
     height: $playerHeight;
     width: $playerWidth;
+
+    @media screen and (max-width: $small) {
+        height: 90px;
+        width: 60px;
+    }
 
     .acting {
         color: #2eaf2e;
@@ -158,6 +204,10 @@ $currentBetOffset: -($currentBetWidth - 15px);
         position: absolute;
         top: $outerHeight;
         height: $playerHeight - (2 * $outerHeight);
+
+        @media screen and (max-width: $small) {
+            height: 40px;
+        }
     }
 
     .current-bet {
@@ -187,6 +237,10 @@ $currentBetOffset: -($currentBetWidth - 15px);
     .current-bet {
         top: -30px;
         right: $currentBetOffset;
+
+        @media screen and (max-width: $small) {
+            right: -64px;
+        }
     }
 
     .hand.flipped-hand + .current-bet {
@@ -270,11 +324,21 @@ $colDealerChipVerticalOffset: 60px;
 .player-0 {
     right: $tablePadding;
     @include bottom-row;
+
+    @media screen and (max-width: $small) {
+        right: 70px;
+        // bottom: -20px;
+    }
 }
 
 .player-1 {
     right: $tablePadding + $playerWidth + $marginBetweenPlayers;
     @include bottom-row;
+
+    @media screen and (max-width: $small) {
+        right: 220px;
+        // bottom: -20px;
+    }
 }
 
 .player-2 {
@@ -568,6 +632,10 @@ $winnerColYPositions: 77px, 60px;
     position: absolute;
     font-weight:bold;
     width: 100%;
+
+    @media screen and (max-width: $small) {
+        margin-top: 100px;
+    }
 }
 
 .winner-pot {
@@ -585,4 +653,32 @@ $winnerColYPositions: 77px, 60px;
     text-align: center;
     top: 332px;
     position: absolute;
+
+    @media screen and (max-width: $small){
+        top: 302px;
+    }
+}
+
+.v-btn:not(.v-btn--round).v-size--large {
+    @media screen and (max-width: $small){
+        height: 32px;
+        width: 92px;
+    }
+}
+
+.call-btn, .raise-btn {
+    @media screen and (max-width: $small){
+        display: none;
+    }
+}
+
+.m-call-raise {
+    display: none;
+
+    @media screen and (max-width: $small) {
+        display: block;
+        width: 100%;
+        text-align: center;
+        padding-bottom: 40px;
+    }
 }
