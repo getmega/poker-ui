@@ -38,16 +38,41 @@
                 </v-row>
 
                 <v-row v-if="userPlayer" class="d-flex justify-center action-btns">
-                    <v-btn large :disabled="isShowingWinners || !isTurn || !canCall" @click="handleCallClick"
+                    <v-btn
+                        large
+                        :disabled="isShowingWinners || !isTurn || !canCall"
+                        @click="handleCallClick"
+                        class="call-btn"
                         >Call</v-btn
                     >
-                    <v-btn large :disabled="isShowingWinners || !isTurn || !canRaise" @click="showRaiseDialog = true"
+                    <v-btn
+                        large
+                        :disabled="isShowingWinners || !isTurn || !canRaise"
+                        @click="showRaiseDialog = true"
+                        class="raise-btn"
                         >Raise</v-btn
                     >
 
                     <div v-if="!isDealing && game.hand && game.hand.length > 0" class="hand user-hand">
                         <div class="card" :style="`background-image: url('/images/cards/${game.hand[0]}.svg');`" />
                         <div class="card" :style="`background-image: url('/images/cards/${game.hand[1]}.svg');`" />
+                    </div>
+
+                    <div class="m-call-raise">
+                        <v-btn
+                            large
+                            :disabled="isShowingWinners || !isTurn || !canCall"
+                            @click="handleCallClick"
+                            class="m-call-btn"
+                            >Call</v-btn
+                        >
+                        <v-btn
+                            large
+                            :disabled="isShowingWinners || !isTurn || !canRaise"
+                            @click="showRaiseDialog = true"
+                            class="m-raise-btn"
+                            >Raise</v-btn
+                        >
                     </div>
 
                     <v-btn large :disabled="isShowingWinners || !isTurn || !canCheck" @click="handleCheckClick"
